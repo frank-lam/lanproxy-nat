@@ -1,4 +1,5 @@
-#拉取代码
+# author: frank_lin@whu.edu.cn
+
 FROM alpine as git
 
 WORKDIR /lanproxy

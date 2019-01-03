@@ -164,7 +164,9 @@ $ service nginx start
 
 
 
-- 通过 Docker，启动 lanproxy 服务
+### Docker Run
+
+- 通过 Docker，启动 lanproxy 服务，`service docker start`
 - 启动 Docker 后运行一下代码
 
 ```shell
@@ -179,9 +181,11 @@ docker run -d \
 
 输入你的公网服务器 IP:8090，例如：`http://120.92.10.120:8090`，即可看到如下的界面。好啦，到这里 lanproxy 的基础环境已经搭建成功，是不是很快，这就是 docker 的魅力。如果不用 docker 启动，请参考 lanproxy 的官方文档。
 
-![1544794304011](assets/1544794304011.png)
+这里的 9000-9100 即为需要映射的端口地址，可以自定义设置。
 
 默认：account/password：admin/admin
+
+![1544794304011](assets/1544794304011.png)
 
 
 
