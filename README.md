@@ -431,8 +431,8 @@ docker run -d \
 
 参数说明
 
-- input_your_key：这里是在lanproxy后台配置的密钥
-- input_your_host：服务器的ip，支持域名
+- input_your_key：这里是在 lanproxy 后台配置的密钥
+- input_your_host：服务器的 ip，支持域名
 
 
 
