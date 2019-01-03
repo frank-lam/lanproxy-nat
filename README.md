@@ -126,6 +126,50 @@ lanproxy 是一个将局域网个人电脑、服务器代理到公网的内网�
 |          |                  | ★    | 方式3：Java > 1.7 的 JDK环境 + maven + 源码下载 |
 |          |                  |      | 方式4：Go 客户端下载启动                        |
 
+<table>
+   <col width="94.47" style='mso-width-source:userset;mso-width-alt:3022;'/>
+   <col width="125.47" style='mso-width-source:userset;mso-width-alt:4014;'/>
+   <col width="90.27" style='mso-width-source:userset;mso-width-alt:2888;'/>
+   <col width="373.73" span="2" style='mso-width-source:userset;mso-width-alt:11959;'/>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl65" height="18" width="94.47" style='height:13.50pt;width:70.85pt;' x:str>安装服务</td>
+    <td class="xl65" width="125.47" style='width:94.10pt;' x:str>说明</td>
+    <td class="xl65" width="90.27" style='width:67.70pt;' x:str>推荐</td>
+    <td class="xl65" width="373.73" style='width:280.30pt;' x:str>安装方式</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl66" height="18" style='height:13.50pt;' x:str>服务端</td>
+    <td class="xl66" x:str>一台公网服务器</td>
+    <td class="xl66" x:str>★★★</td>
+    <td x:str>方式1：Docker容器部署</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl66" height="72" rowspan="4" style='height:54.00pt;border-right:none;border-bottom:none;' x:str>客户端</td>
+    <td class="xl66" rowspan="4" style='border-right:none;border-bottom:none;' x:str>一台内网电脑</td>
+    <td class="xl66" x:str>★★★</td>
+    <td x:str>方式1：Docker容器部署</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl66" x:str>★★</td>
+    <td x:str>方式2：Java &gt; 1.7 的 JDK环境 + 客户端下载</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl66" x:str>★</td>
+    <td x:str>方式3：Java &gt; 1.7 的 JDK环境 + maven + 源码下载</td>
+   </tr>
+   <tr height="18" style='height:13.50pt;'>
+    <td class="xl66" x:str>★</td>
+    <td x:str>方式4：Go 客户端下载启动</td>
+   </tr>
+    <tr width="0" style='display:none;'>
+     <td width="94" style='width:71;'></td>
+     <td width="125" style='width:94;'></td>
+     <td width="90" style='width:68;'></td>
+     <td width="374" style='width:280;'></td>
+    </tr>
+  </table>
+
+
 
 
 ## 三、公网服务器配置（Docker 一键启动）
