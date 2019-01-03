@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   lanproxy-client:
-    image: franklin5/lanproxy-client:1.0
+    image: franklin5/lanproxy-client
     container_name: lanproxy-client
     environment:
      # 这里是在lanproxy后台配置的密钥

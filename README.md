@@ -8,6 +8,7 @@
     - [二、快速指南](#二快速指南)
         - [硬件与环境要求](#硬件与环境要求)
         - [提供安装方式](#提供安装方式)
+        - [服务端与客户端](#服务端与客户端)
     - [三、公网服务器配置（Docker 一键启动）](#三公网服务器配置docker-一键启动)
         - [3.1 基础环境安装](#31-基础环境安装)
         - [3.2 Docker 启动服务端程序 ⭐⭐⭐](#32-docker-启动服务端程序-)
@@ -163,6 +164,13 @@ lanproxy 是一个将局域网个人电脑、服务器代理到公网的内网�
    </tr>
   </table>
 
+
+### 服务端与客户端
+
+| 服务                     | 下载地址                                                 |
+| ------------------------ | -------------------------------------------------------- |
+| lanproxy client for java | [仓库地址](https://github.com/frank-lam/lanproxy-client) |
+| lanproxy server for java | [仓库地址](https://github.com/frank-lam/lanproxy-server) |
 
 
 
@@ -413,7 +421,12 @@ $ service nginx restart
 1. 一键启动客户端
 
 ```shell
-docker run -it --name lanproxy-client -e LANPROXY_KEY="input_your_key" -e LANPROXY_HOST="input_your_host" -d --restart=always franklin5/lanproxy-client
+docker run -d \
+           --name lanproxy-client \
+           -e LANPROXY_KEY="input_your_key" \
+           -e LANPROXY_HOST="input_your_host" \
+           --restart=always \
+           franklin5/lanproxy-client
 ```
 
 参数说明
