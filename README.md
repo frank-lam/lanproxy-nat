@@ -115,9 +115,22 @@ lanproxy 是一个将局域网个人电脑、服务器代理到公网的内网�
 
 
 
+### 提供安装方式
+
+| 安装服务 | 说明             | 推荐 | 安装方式                                        |
+| -------- | ---------------- | ---- | ----------------------------------------------- |
+| 服务端   | 一台公网服务器   | ★★★  | 方式1：Docker容器部署                           |
+|          |                  |      |                                                 |
+| 客户端   | 任意一台内网服务 | ★★★  | 方式1：Docker容器部署                           |
+|          |                  | ★★   | 方式2：Java > 1.7 的 JDK环境 + 客户端下载       |
+|          |                  | ★    | 方式3：Java > 1.7 的 JDK环境 + maven + 源码下载 |
+|          |                  |      | 方式4：Go 客户端下载启动                        |
+
+
+
 ## 三、公网服务器配置（Docker 一键启动）
 
-### 基础环境安装
+### 3.1 基础环境安装
 
 1. 安装 docker 服务，以 CentOS 7.4 为例
 
@@ -164,7 +177,9 @@ $ service nginx start
 
 
 
-### Docker Run
+### 3.2 Docker 启动服务端程序
+
+#### 方式一：docker run
 
 - 通过 Docker，启动 lanproxy 服务，`service docker start`
 - 启动 Docker 后运行一下代码
@@ -177,22 +192,63 @@ docker run -d \
            -p 4993:4993 \
            -p 9000-9100:9000-9100 \
            --restart=always \
-           -e LANPROXY_USERNAME="admin@biod" \
-           -e LANPROXY_PASSWORD="biodwhub503" \
-           franklin5/lanproxy-server:2.0
+           -e LANPROXY_USERNAME="input_username" \
+           -e LANPROXY_PASSWORD="input_password" \
+           franklin5/lanproxy-server
 ```
 
 输入你的公网服务器 IP:8090，例如：`http://120.92.10.120:8090`，即可看到如下的界面。好啦，到这里 lanproxy 的基础环境已经搭建成功，是不是很快，这就是 docker 的魅力。如果不用 docker 启动，请参考 lanproxy 的官方文档。
 
 这里的 9000-9100 即为需要映射的端口地址，可以自定义设置。
 
-默认：account/password：admin/admin
+
+
+#### 方式二：docker compose
+
+1. 创建 docker-compose.yml 文件
+
+```yml
+version: '3.1'
+services:
+  lanproxy-client:
+    image: franklin5/lanproxy-server
+    container_name: lanproxy-server
+    environment:
+     # 配置你的账号
+     - LANPROXY_USERNAME=input_username
+     # 配置你的密码
+     - LANPROXY_PASSWORD=input_password
+    ports:
+     - 8090:8090
+     - 4900:4900
+     - 4993:4993
+     - 9000-9100:9000-9100
+    restart: always
+```
+
+2. 启动服务
+
+```shell
+docker-compose up -d
+```
+
+3. 停止服务
+
+```shell
+docker-compose down
+```
+
+
+
+😎 至此你的 lanproxy 服务端已经配置成功，账号密码：即为 docker 配置中你配置的账号密码
 
 ![1544794304011](assets/1544794304011.png)
 
 
 
-### Nginx 反向代理配置域名
+
+
+### 3.3 Nginx 反向代理配置域名
 
 在上一步，我们通过 docker 启动了一个 lanproxy 环境，但是通过 IP 和端口号组合的方式并不优雅。这里我将解析两个域名通过 Nginx 进行端口转发。
 
@@ -266,7 +322,7 @@ $ service nginx restart
 
 
 
-### 继续配置 lanproxy 后台服务
+### 3.4 继续配置 lanproxy 后台服务
 
 1. 添加一个客户端
 
@@ -302,12 +358,12 @@ $ service nginx restart
 
 #### 运行 lanproxy client 服务
 
-##### 方式一：docker run 命令
+##### 方式一：docker run
 
 1. 一键启动客户端
 
 ```shell
-docker run -it --name lanproxy-client -e LANPROXY_KEY="input_your_key" -e LANPROXY_HOST="input_your_host" -d --restart=always franklin5/lanproxy-client:1.0
+docker run -it --name lanproxy-client -e LANPROXY_KEY="input_your_key" -e LANPROXY_HOST="input_your_host" -d --restart=always franklin5/lanproxy-client
 ```
 
 参数说明
@@ -318,7 +374,7 @@ docker run -it --name lanproxy-client -e LANPROXY_KEY="input_your_key" -e LANPRO
 例如：
 
 ```shell
-docker run -it --name lanproxy-client -e LANPROXY_KEY="input_your_key" -e LANPROXY_HOST="input_your_host" -d --restart=always franklin5/lanproxy-client:1.0
+docker run -it --name lanproxy-client -e LANPROXY_KEY="input_your_key" -e LANPROXY_HOST="input_your_host" -d --restart=always franklin5/lanproxy-client
 ```
 
 - 可选：为了这里也为你提供了执行的 `docker-run.sh` （保存成 shell 修改和运行更方便）
@@ -361,7 +417,7 @@ docker restart lanproxy-client
 version: '3.1'
 services:
   lanproxy-client:
-    image: franklin5/lanproxy-client:1.0
+    image: franklin5/lanproxy-client
     container_name: lanproxy-client
     environment:
      # 这里是在lanproxy后台配置的密钥
