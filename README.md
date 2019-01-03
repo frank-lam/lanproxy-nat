@@ -7,14 +7,18 @@
         - [1.3 原理](#13-原理)
     - [二、快速指南](#二快速指南)
         - [硬件与环境要求](#硬件与环境要求)
+        - [提供安装方式](#提供安装方式)
     - [三、公网服务器配置（Docker 一键启动）](#三公网服务器配置docker-一键启动)
-        - [基础环境安装](#基础环境安装)
-        - [Nginx 反向代理配置域名](#nginx-反向代理配置域名)
-        - [继续配置 lanproxy 后台服务](#继续配置-lanproxy-后台服务)
+        - [3.1 基础环境安装](#31-基础环境安装)
+        - [3.2 Docker 启动服务端程序](#32-docker-启动服务端程序)
+            - [方式一：docker run](#方式一docker-run)
+            - [方式二：docker compose](#方式二docker-compose)
+        - [3.3 Nginx 反向代理配置域名](#33-nginx-反向代理配置域名)
+        - [3.4 继续配置 lanproxy 后台服务](#34-继续配置-lanproxy-后台服务)
     - [四、内网电脑客户端配置](#四内网电脑客户端配置)
         - [4.1 强烈推荐：开箱即用的 Docker 版客户端 ⭐⭐⭐](#41-强烈推荐开箱即用的-docker-版客户端-)
             - [运行 lanproxy client 服务](#运行-lanproxy-client-服务)
-                - [方式一：docker run 命令](#方式一docker-run-命令)
+                - [方式一：docker run](#方式一docker-run-1)
                 - [方式二：docker-compose](#方式二docker-compose)
             - [lanproxy 网页后台服务查看](#lanproxy-网页后台服务查看)
         - [4.2 推荐：开箱即用客户端，仅需安装 Java 环境 ⭐⭐](#42-推荐开箱即用客户端仅需安装-java-环境-)
@@ -131,29 +135,28 @@ lanproxy 是一个将局域网个人电脑、服务器代理到公网的内网�
    <tr height="18" style='height:13.50pt;'>
     <td class="xl66" height="18" style='height:13.50pt;' x:str>服务端</td>
     <td class="xl66" x:str>一台公网服务器</td>
-    <td class="xl66" x:str>★★★</td>
+    <td class="xl66" x:str>⭐⭐⭐</td>
     <td x:str>方式1：Docker容器部署</td>
    </tr>
    <tr height="18" style='height:13.50pt;'>
     <td class="xl66" height="72" rowspan="4" style='height:54.00pt;border-right:none;border-bottom:none;' x:str>客户端</td>
     <td class="xl66" rowspan="4" style='border-right:none;border-bottom:none;' x:str>一台内网电脑</td>
-    <td class="xl66" x:str>★★★</td>
+    <td class="xl66" x:str>⭐⭐⭐</td>
     <td x:str>方式1：Docker容器部署</td>
    </tr>
    <tr height="18" style='height:13.50pt;'>
-    <td class="xl66" x:str>★★</td>
+    <td class="xl66" x:str>⭐⭐</td>
     <td x:str>方式2：Java &gt; 1.7 的 JDK环境 + 客户端下载</td>
    </tr>
    <tr height="18" style='height:13.50pt;'>
-    <td class="xl66" x:str>★</td>
+    <td class="xl66" x:str>⭐</td>
     <td x:str>方式3：Java &gt; 1.7 的 JDK环境 + maven + 源码下载</td>
    </tr>
    <tr height="18" style='height:13.50pt;'>
-    <td class="xl66" x:str>★</td>
+    <td class="xl66" x:str>⭐</td>
     <td x:str>方式4：Go 客户端下载启动</td>
    </tr>
   </table>
-
 
 
 
