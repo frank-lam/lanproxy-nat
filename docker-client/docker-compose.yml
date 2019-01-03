@@ -1,0 +1,11 @@
+version: '3.1'
+services:
+  lanproxy-client:
+    image: franklin5/lanproxy-client:1.0
+    container_name: lanproxy-client
+    environment:
+     # 这里是在lanproxy后台配置的密钥
+     - LANPROXY_KEY=input_your_key
+     # 服务器的ip，支持域名
+     - LANPROXY_HOST=input_your_host
+    restart: always

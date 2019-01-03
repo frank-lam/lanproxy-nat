@@ -442,7 +442,7 @@ docker run -it --name lanproxy-client -e LANPROXY_KEY="input_your_key" -e LANPRO
 - 可选：为了这里也为你提供了执行的 `docker-run.sh` （保存成 shell 修改和运行更方便）
 
 ```shell
-wget https://raw.githubusercontent.com/frank-lam/docker-shell/master/lanproxy/docker-client/docker-run.sh
+wget https://raw.githubusercontent.com/frank-lam/lanproxy-nat/master/docker-client/docker-run.sh
 ```
 
 2. 停止容器
@@ -492,7 +492,7 @@ services:
 * 可选：你可以手工复制创建，当然这里也为你提供方便下载的 `docker-compose.yml`
 
 ```shell
-wget https://raw.githubusercontent.com/frank-lam/docker-shell/master/lanproxy/docker-client/docker-compose.yml
+wget https://raw.githubusercontent.com/frank-lam/lanproxy-nat/master/docker-client/docker-compose.yml
 ```
 
 
