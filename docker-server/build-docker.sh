@@ -1,0 +1,1 @@
+docker build -t franklin5/lanproxy-server:2.0 .

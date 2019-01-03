@@ -1,31 +1,21 @@
+FROM centos
 # author: frank_lin@whu.edu.cn
 
-FROM alpine as git
+# running required command
+RUN yum update
+RUN yum install vim -y
+RUN yum install java-1.8.0-openjdk.x86_64 -y
+RUN yum install git -y
 
-WORKDIR /lanproxy
+WORKDIR /
 
-RUN apk update
-RUN apk add git
-RUN git clone https://github.com/ffay/lanproxy.git ./
+RUN git clone https://github.com/frank-lam/lanproxy-server.git
 
-#编译代码
-FROM maven as maven
-
-WORKDIR /lanproxy
-
-COPY --from=git /lanproxy ./
-
-RUN mvn compile package -pl proxy-server -am 
-
-RUN cd distribution && DIR_NAME=$(echo `ls` | awk '{print $NF}') && mv $DIR_NAME /lanproxy/lanproxy-server
-
-#编译Docker镜像
-FROM openjdk:8-jdk-alpine
+# copy the code
+# COPY lanproxy-client /lanproxy-client
 
 WORKDIR /lanproxy-server
+ENTRYPOINT ["/lanproxy-server/init.sh"]
 
-COPY --from=maven /lanproxy/lanproxy-server ./
-
-EXPOSE 8090 4900 4993
-
-CMD ["sh", "-c", "sh bin/startup.sh && tail -f logs/server.log"]
+# EXPOSE 8888
+CMD ["/bin/bash"]

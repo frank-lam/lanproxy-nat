@@ -176,7 +176,10 @@ docker run -d \
            -p 4900:4900 \
            -p 4993:4993 \
            -p 9000-9100:9000-9100 \
-           franklin5/lanproxy-server
+           --restart=always \
+           -e LANPROXY_USERNAME="admin@biod" \
+           -e LANPROXY_PASSWORD="biodwhub503" \
+           franklin5/lanproxy-server:2.0
 ```
 
 输入你的公网服务器 IP:8090，例如：`http://120.92.10.120:8090`，即可看到如下的界面。好啦，到这里 lanproxy 的基础环境已经搭建成功，是不是很快，这就是 docker 的魅力。如果不用 docker 启动，请参考 lanproxy 的官方文档。
