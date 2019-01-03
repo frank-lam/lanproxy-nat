@@ -161,12 +161,6 @@ lanproxy 是一个将局域网个人电脑、服务器代理到公网的内网�
     <td class="xl66" x:str>★</td>
     <td x:str>方式4：Go 客户端下载启动</td>
    </tr>
-    <tr width="0" style='display:none;'>
-     <td width="94" style='width:71;'></td>
-     <td width="125" style='width:94;'></td>
-     <td width="90" style='width:68;'></td>
-     <td width="374" style='width:280;'></td>
-    </tr>
   </table>
 
 
