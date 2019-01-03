@@ -255,7 +255,7 @@ $ service nginx restart
 
 
 
-😜 至此，你可以通过域名 http://lanproxy.frankfeekr.cn 进行访问 lanproxy 网页后台配置
+😚 至此，你可以通过域名 http://lanproxy.frankfeekr.cn 进行访问 lanproxy 网页后台配置
 
 
 
@@ -684,7 +684,7 @@ $ vim /opt/maven/apache-maven-3.6.0/conf/settings.xml
 
 
 
-😜 至此，Maven 安装成功
+😚 至此，Maven 安装成功
 
 
 
@@ -759,7 +759,7 @@ $ bash  bin/startup.sh
 
 5. 访问测试
 
-   😜 至此，即可通过公网域名 http://jupyter.frankfeekr.cn 访问内网服务，实现内网穿透
+   😚 至此，即可通过公网域名 http://jupyter.frankfeekr.cn 访问内网服务，实现内网穿透
 
 ![1544798196919](assets/1544798196919.png)
 
