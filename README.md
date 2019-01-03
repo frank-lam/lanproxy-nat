@@ -117,15 +117,6 @@ lanproxy 是一个将局域网个人电脑、服务器代理到公网的内网�
 
 ### 提供安装方式
 
-| 安装服务 | 说明             | 推荐 | 安装方式                                        |
-| -------- | ---------------- | ---- | ----------------------------------------------- |
-| 服务端   | 一台公网服务器   | ★★★  | 方式1：Docker容器部署                           |
-|          |                  |      |                                                 |
-| 客户端   | 任意一台内网服务 | ★★★  | 方式1：Docker容器部署                           |
-|          |                  | ★★   | 方式2：Java > 1.7 的 JDK环境 + 客户端下载       |
-|          |                  | ★    | 方式3：Java > 1.7 的 JDK环境 + maven + 源码下载 |
-|          |                  |      | 方式4：Go 客户端下载启动                        |
-
 <table width="" border="0" cellpadding="0" cellspacing="0" >
    <col width="94.47" style='mso-width-source:userset;mso-width-alt:3022;'/>
    <col width="125.47" style='mso-width-source:userset;mso-width-alt:4014;'/>
@@ -133,9 +124,9 @@ lanproxy 是一个将局域网个人电脑、服务器代理到公网的内网�
    <col width="373.73" span="2" style='mso-width-source:userset;mso-width-alt:11959;'/>
    <tr height="18" style='height:13.50pt;'>
     <td class="xl65" height="18" width="94.47" style='height:13.50pt;width:70.85pt;' x:str>安装服务</td>
-    <td class="xl65" width="125.47" style='width:94.10pt;' x:str>说明</td>
+    <td class="xl65" width="150" style='width:94.10pt;' x:str>说明</td>
     <td class="xl65" width="90.27" style='width:67.70pt;' x:str>推荐</td>
-    <td class="xl65" width="373.73" style='width:280.30pt;' x:str>安装方式</td>
+    <td class="xl65" width="400" style='width:280.30pt;' x:str>安装方式</td>
    </tr>
    <tr height="18" style='height:13.50pt;'>
     <td class="xl66" height="18" style='height:13.50pt;' x:str>服务端</td>
