@@ -126,7 +126,7 @@ lanproxy 是一个将局域网个人电脑、服务器代理到公网的内网�
 |          |                  | ★    | 方式3：Java > 1.7 的 JDK环境 + maven + 源码下载 |
 |          |                  |      | 方式4：Go 客户端下载启动                        |
 
-<table>
+<table width="" border="0" cellpadding="0" cellspacing="0" >
    <col width="94.47" style='mso-width-source:userset;mso-width-alt:3022;'/>
    <col width="125.47" style='mso-width-source:userset;mso-width-alt:4014;'/>
    <col width="90.27" style='mso-width-source:userset;mso-width-alt:2888;'/>
@@ -168,6 +168,8 @@ lanproxy 是一个将局域网个人电脑、服务器代理到公网的内网�
      <td width="374" style='width:280;'></td>
     </tr>
   </table>
+
+
 
 
 
