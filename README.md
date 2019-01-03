@@ -10,7 +10,7 @@
         - [提供安装方式](#提供安装方式)
     - [三、公网服务器配置（Docker 一键启动）](#三公网服务器配置docker-一键启动)
         - [3.1 基础环境安装](#31-基础环境安装)
-        - [3.2 Docker 启动服务端程序](#32-docker-启动服务端程序)
+        - [3.2 Docker 启动服务端程序 ⭐⭐⭐](#32-docker-启动服务端程序-)
             - [方式一：docker run](#方式一docker-run)
             - [方式二：docker compose](#方式二docker-compose)
         - [3.3 Nginx 反向代理配置域名](#33-nginx-反向代理配置域名)
@@ -216,7 +216,7 @@ $ service nginx start
 
 
 
-### 3.2 Docker 启动服务端程序
+### 3.2 Docker 启动服务端程序 ⭐⭐⭐
 
 #### 方式一：docker run
 
