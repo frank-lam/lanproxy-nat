@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+  lanproxy-client:
+    image: franklin5/lanproxy-server
+    container_name: lanproxy-server
+    environment:
+     # 配置你的账号
+     - LANPROXY_USERNAME=input_username
+     # 配置你的密码
+     - LANPROXY_PASSWORD=input_password
+    ports:
+     - 8090:8090
+     - 4900:4900
+     - 4993:4993
+     - 9000-9100:9000-9100
+    restart: always
