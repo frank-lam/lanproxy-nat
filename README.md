@@ -12,17 +12,17 @@
         - [Nginx 反向代理配置域名](#nginx-反向代理配置域名)
         - [继续配置 lanproxy 后台服务](#继续配置-lanproxy-后台服务)
     - [四、内网电脑客户端配置](#四内网电脑客户端配置)
-        - [4.1 强烈推荐：开箱即用的 Docker 版客户端 ⭐⭐⭐](#41-强烈推荐开箱即用的-docker-版客户端-⭐⭐⭐)
+        - [4.1 强烈推荐：开箱即用的 Docker 版客户端 ⭐⭐⭐](#41-强烈推荐开箱即用的-docker-版客户端-)
             - [运行 lanproxy client 服务](#运行-lanproxy-client-服务)
                 - [方式一：docker run 命令](#方式一docker-run-命令)
                 - [方式二：docker-compose](#方式二docker-compose)
             - [lanproxy 网页后台服务查看](#lanproxy-网页后台服务查看)
-        - [4.2 推荐：开箱即用客户端，仅需安装 Java 环境 ⭐⭐](#42-推荐开箱即用客户端仅需安装-java-环境-⭐⭐)
+        - [4.2 推荐：开箱即用客户端，仅需安装 Java 环境 ⭐⭐](#42-推荐开箱即用客户端仅需安装-java-环境-)
             - [Java JDK 1.8 安装](#java-jdk-18-安装)
             - [下载 Java 客户端（开箱即用）](#下载-java-客户端开箱即用)
             - [运行 lanproxy client 服务](#运行-lanproxy-client-服务-1)
             - [lanproxy 网页后台服务查看](#lanproxy-网页后台服务查看-1)
-        - [4.3 Java 客户端，通过 Maven 方式安装依赖 ⭐](#43-java-客户端通过-maven-方式安装依赖-⭐)
+        - [4.3 Java 客户端，通过 Maven 方式安装依赖 ⭐](#43-java-客户端通过-maven-方式安装依赖-)
             - [Java 1.8 安装](#java-18-安装)
             - [maven 安装](#maven-安装)
             - [启动内网服务](#启动内网服务)
@@ -164,9 +164,8 @@ $ service nginx start
 
 
 
-通过 Docker，启动 lanproxy 服务
-
-启动 Docker 后运行一下代码
+- 通过 Docker，启动 lanproxy 服务
+- 启动 Docker 后运行一下代码
 
 ```shell
 docker run -d \
