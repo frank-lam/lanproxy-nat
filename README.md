@@ -12,15 +12,15 @@
         - [Nginx 反向代理配置域名](#nginx-反向代理配置域名)
         - [继续配置 lanproxy 后台服务](#继续配置-lanproxy-后台服务)
     - [四、内网电脑客户端配置](#四内网电脑客户端配置)
-        - [4.1 推荐：开箱即用客户端，仅需安装 Java 环境](#41-推荐开箱即用客户端仅需安装-java-环境)
-            - [Java JDK 1.8 安装](#java-jdk-18-安装)
-            - [下载 Java 客户端（开箱即用）](#下载-java-客户端开箱即用)
+        - [4.1 💎强烈推荐：开箱即用的 Docker 版客户端](#41-💎强烈推荐开箱即用的-docker-版客户端)
             - [运行 lanproxy client 服务](#运行-lanproxy-client-服务)
-            - [lanproxy 网页后台服务查看](#lanproxy-网页后台服务查看)
-        - [4.2 推荐：开箱即用的 Docker 版客户端](#42-推荐开箱即用的-docker-版客户端)
-            - [运行 lanproxy client 服务](#运行-lanproxy-client-服务-1)
                 - [方式一：docker run 命令](#方式一docker-run-命令)
                 - [方式二：docker-compose](#方式二docker-compose)
+            - [lanproxy 网页后台服务查看](#lanproxy-网页后台服务查看)
+        - [4.2 ⭐推荐：开箱即用客户端，仅需安装 Java 环境](#42-⭐推荐开箱即用客户端仅需安装-java-环境)
+            - [Java JDK 1.8 安装](#java-jdk-18-安装)
+            - [下载 Java 客户端（开箱即用）](#下载-java-客户端开箱即用)
+            - [运行 lanproxy client 服务](#运行-lanproxy-client-服务-1)
             - [lanproxy 网页后台服务查看](#lanproxy-网页后台服务查看-1)
         - [4.3 Java 客户端，通过 Maven 方式安装依赖](#43-java-客户端通过-maven-方式安装依赖)
             - [Java 1.8 安装](#java-18-安装)
@@ -283,9 +283,129 @@ $ service nginx restart
 
 ## 四、内网电脑客户端配置
 
+### 4.1 💎强烈推荐：开箱即用的 Docker 版客户端
+
+> 由于在不同的主机上配置客户端，发现非常消耗时间，同时也缺乏稳定性。于是决定来定制一款开箱即用的 docker 容器版客户端，这里你将不需要安装任何客户端环境，甚至只需要几行优雅的命令即可启动一个客户端，速度和服务端配置一样飞起来。
+
+我的官方镜像：[franklin5/lanproxy-client - Docker Hub](franklin5/lanproxy-client - Docker Hub
+)
 
 
-### 4.1 推荐：开箱即用客户端，仅需安装 Java 环境
+
+#### 运行 lanproxy client 服务
+
+##### 方式一：docker run 命令
+
+1. 一键启动客户端
+
+```shell
+docker run -it --name lanproxy-client -e LANPROXY_KEY="input_your_key" -e LANPROXY_HOST="input_your_host" -d --restart=always franklin5/lanproxy-client:1.0
+```
+
+参数说明
+
+- input_your_key：这里是在lanproxy后台配置的密钥
+- input_your_host：服务器的ip，支持域名
+
+例如：
+
+```shell
+docker run -it --name lanproxy-client -e LANPROXY_KEY="input_your_key" -e LANPROXY_HOST="input_your_host" -d --restart=always franklin5/lanproxy-client:1.0
+```
+
+- 可选：为了这里也为你提供了执行的 `docker-run.sh` （保存成 shell 修改和运行更方便）
+
+```shell
+wget https://raw.githubusercontent.com/frank-lam/lanproxy-nat/master/docker-client/docker-run.sh
+```
+
+1. 停止容器
+
+```shell
+docker stop lanproxy-client
+```
+
+1. 删除容器
+
+```shell
+docker rm lanproxy-client
+```
+
+1. 强制删除容器
+
+```shell
+ docker rm -f lanproxy-client
+```
+
+1. 重启容器
+
+```shell
+docker restart lanproxy-client
+```
+
+
+
+##### 方式二：docker-compose
+
+1. 在你的项目目录下创建：docker-compose.yml
+
+```yml
+version: '3.1'
+services:
+  lanproxy-client:
+    image: franklin5/lanproxy-client:1.0
+    container_name: lanproxy-client
+    environment:
+     # 这里是在lanproxy后台配置的密钥
+     - LANPROXY_KEY=input_your_key
+     # 服务器的ip，支持域名
+     - LANPROXY_HOST=input_your_host
+    restart: always
+```
+
+- 可选：你可以手工复制创建，当然这里也为你提供方便下载的 `docker-compose.yml`
+
+```shell
+wget https://raw.githubusercontent.com/frank-lam/lanproxy-nat/master/docker-client/docker-compose.yml
+```
+
+
+
+1. 后台启动容器
+
+```shell
+docker-compose up -d
+```
+
+
+
+**🚩使用 docker 方式运行客户端，请务必阅读**
+
+> 以上两种运行方式，选择一种运行即可一键启动 docker 客户端容器。但使用 docker 直接运行容器和在宿主机上运行时有所不同。在 docker 服务启动后，docker 会为宿主机和容器各自分配一个 docker 网卡，而宿主机上会分配默认的 IP 地址，即：`172.17.0.1`，故容器中可以 ping 通宿主机上 `172.17.0.1` 的任何 TCP 端口。
+>
+> 所以我们在后面的后台网页上的端口配置，不再是 `172.0.0.1`，必须是 `172.17.0.1:port`。
+>
+> 话不多说，请进入下一个步奏慢慢体会。
+
+
+
+#### lanproxy 网页后台服务查看
+
+客户端启动服务后，后台可查看状态（在线 / 离线）
+
+![1544798600592](assets/1544798600592.png)
+
+
+
+流量统计
+
+![1544798624799](assets/1544798624799.png)
+
+
+
+
+
+### 4.2 ⭐推荐：开箱即用客户端，仅需安装 Java 环境
 
 > 如果你的本地已经有了 Java 环境（无论你是编译安装，还是 yum/apt-get 安装，都 ok），最低环境 JDK 1.7 以上。那么我推荐你是用本节中的配置说明，可以不用配置 maven 环境，直接拉取客户端一键运行，更加方便。
 
@@ -395,125 +515,6 @@ sh stop.sh
 # 当前客户端运行状态
 sh status.sh
 ```
-
-#### lanproxy 网页后台服务查看
-
-客户端启动服务后，后台可查看状态（在线 / 离线）
-
-![1544798600592](assets/1544798600592.png)
-
-
-
-流量统计
-
-![1544798624799](assets/1544798624799.png)
-
-
-
-### 4.2 推荐：开箱即用的 Docker 版客户端
-
-> 由于在不同的主机上配置客户端，发现非常消耗时间，同时也缺乏稳定性。于是决定来定制一款开箱即用的 docker 容器版客户端，这里你将不需要安装任何客户端环境，甚至只需要几行优雅的命令即可启动一个客户端，速度和服务端配置一样飞起来。
-
-我的官方镜像：[franklin5/lanproxy-client - Docker Hub](franklin5/lanproxy-client - Docker Hub
-)
-
-
-
-#### 运行 lanproxy client 服务
-
-##### 方式一：docker run 命令
-
-1. 一键启动客户端
-
-```shell
-docker run -it --name lanproxy-client -e LANPROXY_KEY="input_your_key" -e LANPROXY_HOST="input_your_host" -d --restart=always franklin5/lanproxy-client:1.0
-```
-
-参数说明
-
-- input_your_key：这里是在lanproxy后台配置的密钥
-- input_your_host：服务器的ip，支持域名
-
-例如：
-
-```shell
-docker run -it --name lanproxy-client -e LANPROXY_KEY="input_your_key" -e LANPROXY_HOST="input_your_host" -d --restart=always franklin5/lanproxy-client:1.0
-```
-- 可选：为了这里也为你提供了执行的 `docker-run.sh` （保存成 shell 修改和运行更方便）
-
-```shell
-wget https://raw.githubusercontent.com/frank-lam/lanproxy-nat/master/docker-client/docker-run.sh
-```
-
-2. 停止容器
-
-```shell
-docker stop lanproxy-client
-```
-
-3. 删除容器
-
-```shell
-docker rm lanproxy-client
-```
-
-4. 强制删除容器
-
-```shell
- docker rm -f lanproxy-client
-```
-
-5. 重启容器
-
-```shell
-docker restart lanproxy-client
-```
-
-
-
-##### 方式二：docker-compose
-
-1. 在你的项目目录下创建：docker-compose.yml
-
-```yml
-version: '3.1'
-services:
-  lanproxy-client:
-    image: franklin5/lanproxy-client:1.0
-    container_name: lanproxy-client
-    environment:
-     # 这里是在lanproxy后台配置的密钥
-     - LANPROXY_KEY=input_your_key
-     # 服务器的ip，支持域名
-     - LANPROXY_HOST=input_your_host
-    restart: always
-```
-
-* 可选：你可以手工复制创建，当然这里也为你提供方便下载的 `docker-compose.yml`
-
-```shell
-wget https://raw.githubusercontent.com/frank-lam/lanproxy-nat/master/docker-client/docker-compose.yml
-```
-
-
-
-2. 后台启动容器
-
-```shell
-docker-compose up -d
-```
-
-
-
-**🚩使用 docker 方式运行客户端，请务必阅读**
-
-> 以上两种运行方式，选择一种运行即可一键启动 docker 客户端容器。但使用 docker 直接运行容器和在宿主机上运行时有所不同。在 docker 服务启动后，docker 会为宿主机和容器各自分配一个 docker 网卡，而宿主机上会分配默认的 IP 地址，即：`172.17.0.1`，故容器中可以 ping 通宿主机上 `172.17.0.1` 的任何 TCP 端口。
->
-> 所以我们在后面的后台网页上的端口配置，不再是 `172.0.0.1`，必须是 `172.17.0.1:port`。
->
-> 话不多说，请进入下一个步奏慢慢体会。
-
-
 
 #### lanproxy 网页后台服务查看
 
