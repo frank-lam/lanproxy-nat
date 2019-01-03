@@ -434,11 +434,7 @@ docker run -d \
 - input_your_key：这里是在lanproxy后台配置的密钥
 - input_your_host：服务器的ip，支持域名
 
-例如：
 
-```shell
-docker run -it --name lanproxy-client -e LANPROXY_KEY="input_your_key" -e LANPROXY_HOST="input_your_host" -d --restart=always franklin5/lanproxy-client
-```
 
 - 可选：为了这里也为你提供了执行的 `docker-run.sh` （保存成 shell 修改和运行更方便）
 
