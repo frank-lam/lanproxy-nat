@@ -454,7 +454,7 @@ git clone https://github.com/frank-lam/lanproxy-client.git
 ```
 
 2. 客户端目录
-```
+```shell
 drwxr-xr-x 7 root root 4096 Jan  2 08:17 ./
 drwxr-xr-x 1 root root 4096 Jan  2 08:17 ../
 drwxr-xr-x 8 root root 4096 Jan  2 08:17 .git/
