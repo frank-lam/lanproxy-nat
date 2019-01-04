@@ -249,11 +249,15 @@ docker run -d \
            -p 4993:4993 \
            -p 9000-9100:9000-9100 \
            --restart=always \
-           -e LANPROXY_USERNAME="input_username" \
-           -e LANPROXY_PASSWORD="input_password" \
+           -e LANPROXY_USERNAME="admin" \
+           -e LANPROXY_PASSWORD="admin" \
+           -v - /usr/local/docker/lanproxy-server/config-data:/root/.lanproxy \
            franklin5/lanproxy-server
 ```
 
+- 参数：
+  - LANPROXY_USERNAME：配置后台管理账号，默认admin
+  - LANPROXY_PASSWORD：配置后台管理密码，默认admin
 - 可选：我也为你创建了上述的下载脚本，方便每次的启动
 
 ```
@@ -277,10 +281,13 @@ services:
     image: franklin5/lanproxy-server
     container_name: lanproxy-server
     environment:
-     # 配置你的账号
-     - LANPROXY_USERNAME=input_username
-     # 配置你的密码
-     - LANPROXY_PASSWORD=input_password
+     # 配置后台管理账号，默认admin
+     - LANPROXY_USERNAME=admin
+     # 配置后台管理密码，默认admin
+     - LANPROXY_PASSWORD=admin
+    volumes:
+     # 用于保存创建的配置文件，避免重启服务后配置消失
+     - /usr/local/docker/lanproxy-server/config-data:/root/.lanproxy
     ports:
      - 8090:8090
      - 4900:4900
