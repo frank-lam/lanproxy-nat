@@ -265,9 +265,11 @@ docker run -d \
 wget https://raw.githubusercontent.com/frank-lam/lanproxy-nat/master/docker-server/docker-run.sh
 ```
 
-输入你的公网服务器 IP:8090，例如：`http://120.92.10.120:8090`，即可看到如下的界面。好啦，到这里 lanproxy 的基础环境已经搭建成功，是不是很快，这就是 docker 的魅力。如果不用 docker 启动，请参考 lanproxy 的官方文档。
+输入你的公网服务器 IP:8090，例如：`http://120.92.10.120:8090`，即可看到后台管理 Web 页面。好啦，到这里 lanproxy 的基础环境已经搭建成功，是不是很快，这就是 docker 的魅力。如果不用 docker 启动，请参考 lanproxy 的官方文档。
 
 这里的 9000-9100 即为需要映射的端口地址，可以自定义设置。
+
+![1546568207628](assets/1546568207628.png)
 
 
 
