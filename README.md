@@ -84,11 +84,7 @@ lanproxy 是一个将局域网个人电脑、服务器代理到公网的内网�
 3. 本地电脑将响应回复给服务器
 4. 服务器将响应回复给用户
 
-
-
-   <div align="center"><img src="assets/15229416333639.jpg" width="300"/></div>
-
-
+   <div align="center"><img src="assets/1547174721865.png" width=""/></div>
 
 
 要搭建内网穿透，我们得完成两个任务
