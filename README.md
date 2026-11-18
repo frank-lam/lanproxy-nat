@@ -248,7 +248,7 @@ docker run -d \
            --restart=always \
            -e LANPROXY_USERNAME="admin" \
            -e LANPROXY_PASSWORD="admin" \
-           -v - /usr/local/docker/lanproxy-server/config-data:/root/.lanproxy \
+           -v /usr/local/docker/lanproxy-server/config-data:/root/.lanproxy \
            franklin5/lanproxy-server
 ```
 
